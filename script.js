@@ -1,29 +1,81 @@
+
+let alphabetsDiv = document.getElementById('alphabetbuttons') // Alphebet Buttons Div
+let alphabetsUl = document.createElement('ul') // Ul  in the alphabetbuttons div to hold the li's of letters
+let life = 5  
+
 window.onload = function(){
-
-let alphabetsDiv = document.getElementById('alphabetbuttons') 
-let alphabetsUl = document.createElement('ul')
-alphabetsArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z']
-alphabetsUl.id = 'alphabet'
-alphabetsDiv.appendChild(alphabetsUl)
-for(let i=0; i<alphabetsArray.length; i++){
+    alphabetsArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+    't', 'u', 'v', 'w', 'x', 'y', 'z']
+    alphabetsUl.id = 'alphabet' // setting an id to th ul 
+    alphabetsDiv.appendChild(alphabetsUl) 
+    for(let i=0; i<alphabetsArray.length; i++){
  
-    let list = document.createElement('li');
-    list.id = 'letter';
-    list.innerHTML = alphabetsArray[i].toUpperCase();
-    alphabetsUl.appendChild(list);
+        let list = document.createElement('li'); //the li's in alphabet UL
+        list.id = 'letter'; // settthe id to the li's
+        list.innerHTML = alphabetsArray[i].toUpperCase();
+        alphabetsUl.appendChild(list);
+
+    }
+    selectQuestion()
+    displayAnswer()
+
+    let answerLength =  answer[gameNumber].length
+    let answerArray =[]
+    let remainingLetters = answerLength
+    //Verifying userChoice with answer
+    let updated = 0
+   
+    alphabetsUl.addEventListener('click', function(e){
+    let answerli = document.getElementById('answer').querySelectorAll('li')
+    let lifecountdown=document.getElementById('countdown')
+    
+    
+    console.log(answerli)    
+    console.log(lifecountdown)
+
+    let guess = e.target.textContent
+    if (life > 0 && remainingLetters >0)
+    {
+        updated = 0
+        console.log(`Updated in outer if ${updated}`) 
+        console.log(`life ${life}`)
+        console.log(guess)
+        for(i=0 ; i< answerLength ;i++){
+          
+            if (answer[gameNumber].charAt(i) === guess){
+                 answerArray[i]=guess
+                 answerli[i].textContent = guess
+                 remainingLetters--
+                 console.log(`Answer array ${answerArray}`)
+                 console.log(`Remaining Letters ${remainingLetters}`)
+                 updated=1
+                console.log(`updated in for loop ${updated}`)
+            }
+            else{
+                   continue
+            }         
+        }
+        if( updated === 0){
+            life--
+            lifecountdown.textContent = 'You have '+ life + ' lives remaining'
+        }    
+    // }
+    // else{
+        if(life ==0){
+        console.log('All lives taken')
+        }
+        if(remainingLetters <= 0){
+        console.log('Word Completed')
+        }
+    }
+
+     })
+
+   
+
 
 }
-selectQuestion()
-displayAnswer()
-
-alphabetsUl.addEventListener('click', function(e){
-    console.log(e.target.textContent)
-   })
-
-}
-
 let question =[' Name of a state in US','An NBA Team name','Name of an extinct animal']
 let answer =[ 'ATLANTA','LALAKERS','KIWI']
 let hintresponse =['First','Second','Third']
@@ -39,14 +91,14 @@ function selectQuestion(){
 }
 
 function displayAnswer(){
+    let answerLength= answer[gameNumber].length
+    //console.log(answerLength)
+    let answerDiv = document.getElementById('answer')
 
-let answerLength= answer[gameNumber].length
-//console.log(answerLength)
-let answerDiv = document.getElementById('answer')
 for(let i=0; i<answerLength; i++){
  
     let answerlist = document.createElement('li');
-    answerlist.id = 'letter';
+    answerlist.id = 'ansletter';
     answerlist.innerHTML = '_';
     //answerlist. ='center'
     answerDiv.appendChild(answerlist);
