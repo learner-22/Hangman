@@ -59,6 +59,8 @@ p{
 
 #footer{
     text-align: center;
+    display:flex;
+    margin:auto
 }
 #countdown{
     font-size: 22px;
@@ -82,3 +84,7 @@ p{
 margin: auto;
  }
 
+img{
+    width: 200px;
+    height :300px;
+}
