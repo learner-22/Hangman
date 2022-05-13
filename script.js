@@ -4,10 +4,16 @@ let alphabetsUl = document.createElement('ul') // Ul  in the alphabetbuttons div
 let life = 5  //Total lives in the game
 let lifecountdown=document.getElementById('countdown') // The label element that racks the life countdown
 let footerImg = document.getElementById('footer2')
-
+//Audio on click of guess letter
 let audio= new Audio("./Images/drip.mp3")
+//Tracing wins and loses
+let wins = 0
+let loses = 0
+let winsP = document.getElementById('wins')
+let losesP = document.getElementById('loses')
 //Displaying the Initial screen on the load of windows
 window.onload = function(){
+    
     alphabetsArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
     't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -35,7 +41,7 @@ window.onload = function(){
     //Event listener to capture the li selected by user and verifying if the guess is correct. If the guess is correct, the answer is displayed else the hangman graphic is shown
 
     alphabetsUl.addEventListener('click', function(e){
-   audio.play()
+    audio.play()
     let answerli = document.getElementById('answer').querySelectorAll('li')
     console.log(e)
     console.log(answerli)    
@@ -74,13 +80,17 @@ window.onload = function(){
         }    
    //Action to be taken when the game is lost
         if(life == 0){
+            loses++ //Incrementing loses count
+            losesP.innerHTML = `Loses : ${loses}`
         console.log('All lives taken')
        // alert ('All lives taken, Hit Reset to continue')
-       statusMessage.textContent = 'All lives taken, Hit Reset to continue!!' 
+       statusMessage.textContent = 'All lives taken, Hit Reset for the Next Qestion!!' 
        modal.style.display = "block";
         }
     //Action to be taken when the game is won
         if(remainingLetters <= 0){
+            wins++ //Incrementing wins count
+            winsP.innerHTML = `Wins : ${wins}`
         console.log('Word Completed')
         //alert ('You Win the Game!!! Next Question is here for you')
         statusMessage.textContent = 'You Win the Game!!!Hit Reset for the Next Question' 
@@ -124,9 +134,9 @@ window.onload = function(){
 }
 
 //Hangman Questions,Answers and Hints ....Basic Setup
-let question =[' Name of a state in US','An NBA Team name','Name of an endangered animal','Which state in US is called the Sunshine State','Which state in US is called The Peach State','Which state in US is called The Grand Canyon State','An extinct Bird']
-let answer =[ 'ATLANTA','LALAKERS','KIWI','FLORIDA','GEORGIA','ARIZONA','DODO']
-let hintresponse =['A Southern City in USA','Remember James!','Similar to a fruit' ,'Down South','Home of hawks','Answer is in the quesion','DO is the key']
+let question =['In which state did the first official American baseball game take place','Name the world’s biggest island','Which country has the most natural lakes','Which country borders 14 nations and crosses 8 time zones','What can be broken but can never be physically held','Which country won the first-ever soccer World Cup ',' Name of a city in US','An NBA Team name','Name of an endangered animal','Which state in US is called the Sunshine State','Which state in US is called The Peach State','Which state in US is called The Grand Canyon State','An extinct Bird']
+let answer =[ 'NEWJERSEY','GREENLAND','CANADA','RUSSIA','PROMISE','URUGUAY','ATLANTA','LALAKERS','KIWI','FLORIDA','GEORGIA','ARIZONA','DODO']
+let hintresponse =['A Northeastern state','It is not so Green','Our Neighbor','You might not want to talk about this country now','You give this to others','This team Defeated Argentina in 1930 soccer World Cup','A Southern City in US','Remember James!','Similar to a fruit' ,'Down South','Home of hawks','Answer is in the quesion','DO is the key']
 let gameNumber 
 
 //Code to select a random Question

@@ -9,22 +9,24 @@
     <script src = "./script.js" defer> </script>
 </head>
 <body>
-    
+ 
     <audio controls loop >
-        <source src='./Images/drip.mp3' type = 'audio/mp3' >
+        <source src="./Images/ambient-piano-amp-strings-10711.mp3" type="audio/mp3">
+     
     </audio>
-
-    <!-- <iframe src="https://youtu.be/2OEL4P1Rz04" allow="autoplay" style="display:none" id="iframeAudio">
-    </iframe> -->
-
     <div id='container'>
+       
         <div id ='instr'>
+            <aside>
+                <p id = wins>Wins: </p>
+                <p id  = loses> Loses:</p>
+            </aside>
             <h1> WELCOME TO HANGMAN GAME</h1>
+            
             <p> Choose from the Alphabets to guess the answer for the question. You have 5 lives to play this game</p>
         </div> 
           
         <div id ='alphabetbuttons'>
-
         </div>
 
         <div id="modal1" class="modal">
@@ -33,43 +35,30 @@
               <p id = "gameStatus">Some text in the Modal..</p>
             </div>        
         </div>
-
+        
+           
         <div id="question">
-
         </div>
       
         <div id = "answer">
-        
-        
         </div>
 
         <div id ="hintresponse">
-            
         </div>
        
-
-        <div id="footer"> 
+        <div id="footer">          
             <div id =footer1>
-            <br>
-            <Label  id="countdown"> Life CountDown</Label>
-            <br>
-           <br>
-            <div id ='button'>
-            <button id="hint">Hint</button>
-            <button id ="reset">Reset</button>
-            </div>
+            <Label  id="countdown"> Life CountDown</Label>     
+                <div id ='button'>
+                 <button id="hint">Hint</button>
+                 <button id ="reset">Reset</button>
+                </div>
             </div>
             <div id ='footer2'> 
-              <!-- <img src = "./Images/img1.jpg"> -->
+               
             </div>
         </div>
     
- </div>
-
-
-
-
-
-
+    </div>
 </body>
 </html>
