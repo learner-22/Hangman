@@ -9,7 +9,7 @@
     Guessing the word correctly before losing all 5 lives is a win.
 ### **Wireframe**
 
-[Wireframe Link] : (https://wireframe.cc/wzUB2R)
+Wireframe Link : https://wireframe.cc/wzUB2R
 
 ### **Explanations of specific Technologies** 
 
@@ -49,4 +49,4 @@ Hangman is a simple game where the  player is presented with a question and expe
 
 
 ### **Link to Hosted Site**
-Installation Instructions
+Game Link : https://learner-22.github.io/Hangman/
